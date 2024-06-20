@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<root>
+    <database table="tpe_hun_cuf">
+        <members>
+            <item name="cufid" datatype="varchar" />
+            <item name="cufcreated" datatype="timestamp" />
+            <item name="ccufusercreated" datatype="varchar" />
+            <item name="cufclave" datatype="varchar" />
+            <item name="cufnombre" datatype="varchar" />
+            <item name="ccpuestado" datatype="varchar" />
+            <item name="ccpulastupdate" datatype="timestamp" />
+            <item name="ccpuuserupdate" datatype="varchar" />
+        </members>
+        <procedures>
+            <procedure type="insert" name="InsertProveedor" query="INSERT INTO tpe_hun_cuf (cufid, cufcreated, ccufusercreated, cufclave, cufnombre, ccpuestado, ccpulastupdate, ccpuuserupdate) VALUES (@cufid, @cufcreated, @ccufusercreated, @cufclave, @cufnombre, @ccpuestado, @ccpulastupdate, @ccpuuserupdate);" />
+            <procedure type="selectM" name="SelectProveedores" query="SELECT * FROM tpe_hun_cuf WHERE cufclave LIKE 'PROV%';" />
+            <procedure type="selectM" name="SelectUnidadesNegocios" query="SELECT * FROM tpe_hun_cuf WHERE cufclave LIKE 'UNID%';" />
+        </procedures>
+    </database>
+    <userControl height="650" width="800">
+        <item name="cufid" label="ID" type="textbox" position="10,10" labelposition="10,30" size="200,30" />
+        <item name="cufcreated" label="Fecha Creación" type="datepicker" position="220,10" labelposition="220,30" size="200,30" />
+        <item name="ccufusercreated" label="Usuario Creación" type="textbox" position="430,10" labelposition="430,30" size="200,30" />
+        <item name="cufclave" label="Clave" type="textbox" position="10,60" labelposition="10,80" size="200,30" />
+        <item name="cufnombre" label="Nombre" type="textbox" position="220,60" labelposition="220,80" size="200,30" />
+        <item name="ccpuestado" label="Estado" type="textbox" position="430,60" labelposition="430,80" size="200,30" />
+        <item name="ccpulastupdate" label="Última Actualización" type="datepicker" position="10,110" labelposition="10,130" size="200,30" />
+        <item name="ccpuuserupdate" label="Usuario Última Actualización" type="textbox" position="220,110" labelposition="220,130" size="200,30" />
+        <item name="submitProveedor" label="Guardar Proveedor" type="button" position="10,160" size="150,30" />
+        <item name="submitUnidadNegocio" label="Guardar Unidad de Negocio" type="button" position="170,160" size="200,30" />
+        <item name="viewProveedores" label="Ver Proveedores" type="button" position="10,210" size="150,30" />
+        <item name="viewUnidadesNegocios" label="Ver Unidades de Negocios" type="button" position="170,210" size="200,30" />
+    </userControl>
+    <!-- área para funciones de ECO -->
+    <!-- fin de área para funciones de ECO -->
+</root>
