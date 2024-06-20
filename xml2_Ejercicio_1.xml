@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!-- 1.- En base al punto 1 del ejercicio anterior continuar con el XML para crear los elemntos visuales bajo las siguientes caracteristicas
+- Crear una pantalla con tama�o de 800X600 acomodando los elementos como indica la imagen adjunta.
+- Tomar en cuenta los siguientes puntos:
+	- El "numeroID" sera un valor que el usuario nunca capturaria.
+	- El "nombre" y el "apellido" solo permite en la tabla 100 y 150 caracteres respectivamente. -->
+
+<root>
+    <database table="persona">
+        <members>
+            <item name="numeroID" datatype="int" />
+            <item name="nombre" datatype="varchar(100)" />
+            <item name="apellido" datatype="varchar(150)" />
+            <item name="edad" datatype="int" />
+            <item name="fechNacimiento" datatype="date" />
+        </members>
+        <procedures>
+            <procedure type="insert" name="InsertPersona" query="INSERT INTO persona (nombre, apellido, edad, fechNacimiento) VALUES (@nombre, @apellido, @edad, @fechNacimiento);" />
+            <procedure type="update" name="UpdatePersona" query="UPDATE persona SET nombre=@nombre, apellido=@apellido, edad=@edad, fechNacimiento=@fechNacimiento WHERE numeroID=@numeroID;" />
+            <procedure type="selectS" name="SelectPersona" query="SELECT * FROM persona WHERE numeroID=@numeroID;" />
+        </procedures>
+    </database>
+    <userControl height="600" width="800">
+        <!-- El numeroID no es capturado por el usuario, no se define en el userControl -->
+        <item name="nombre" label="Nombre" type="textbox" position="10,10" labelposition="10,40" size="200,30" />
+        <item name="apellido" label="Apellido" type="textbox" position="220,10" labelposition="220,40" size="200,30" />
+        <item name="edad" label="Edad" type="textbox" position="10,60" labelposition="10,90" size="50,30" />
+        <item name="fechNacimiento" label="Fecha de Nacimiento" type="datepicker" position="70,60" labelposition="70,90" size="150,30" />
+        <item name="submit" label="Guardar" type="button" position="10,110" size="100,30" />
+    </userControl>
+</root>

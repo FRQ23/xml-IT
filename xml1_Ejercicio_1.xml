@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!-- Crear un XML que contenga las siguientes caracteristicas
+Variables con los siguientes tipos de dato:
+- numeroID int
+- nombre varchar
+- apellido varchar
+- edad int
+- fechNacimiento (tipo de dato que pueda controlar unicamente la fecha pero no la hora, leer documentacion para ver tipo de dato)
+Procedimientos:
+- un procedimiento de tipo insert que guarde toda las variables en una tabla que se llame "persona"
+- un procedimiento que permita guardar las modificaciones a los registros tomando en cuenta que la llave sera numeroID.
+- un procedimiento que se traiga todas las columnas de un registro especifico -->
+
+<root>
+    <database table="persona">
+        <members>
+            <item name="numeroID" datatype="int" />
+            <item name="nombre" datatype="varchar" />
+            <item name="apellido" datatype="varchar" />
+            <item name="edad" datatype="int" />
+            <item name = "fechaNacimiento" datatype="date"/>
+        </members>
+        <procedures>
+            <procedure type="insert" name="InsertPersona" query = "INSERT INTO persona (numeroID, nombre, apellido, edad, fechaNacimiento) VALUES (@numeroID, @nombre, @apellido, @edad, @fechaNacimiento)" />
+            <procedure type="update" name="UpdatePersona" query = "UPDATE persona SET nombre = @nombre, apellido = @apellido, edad = @edad, fechaNacimiento = @fechaNacimiento WHERE numeroID = @numeroID" />
+            <procedure type="select" name="SelectPersona" query = "SELECT * FROM persona WHERE numeroID = @numeroID" />
+        </procedures>
+    </database>
+</root>

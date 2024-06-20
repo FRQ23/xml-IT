@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!-- 2.- Crear un XML que contenga las siguientes caracteristicas
+	Variables con los tipos de dato que crean conveniente:
+		- fecha
+		- noDocumento
+		- clienteId
+		- total
+	Procedimientos:
+		- Procedimiento para guardar un encabezado en una tabla llamada "doc_enc"
+		- Un procedimiento que guarde los productos que contiene el documento en una tabla llamada "doc_cue", 
+		tomando en cuenta que los productos tienen las siguientes columnas (colClave, colDescripcion, colPrecio) -->
+
+<root>
+    <database table="doc_enc, doc_cue">
+        <members>
+            <item name="fecha" datatype="date" />
+            <item name="noDocumento" datatype="int" />
+            <item name="clienteId" datatype="int" />
+            <item name="total" datatype="decimal" />
+        </members>
+        <procedures>
+            <procedure type="insert" name="InsertDocEnc" query="INSERT INTO doc_enc (fecha, noDocumento, clienteId, total) VALUES (@fecha, @noDocumento, @clienteId, @total);" />
+            <procedure type="insert" name="InsertDocCue" query="INSERT INTO doc_cue (noDocumento, colClave, colDescripcion, colPrecio) VALUES (@noDocumento, @colClave, @colDescripcion, @colPrecio);" />
+        </procedures>
+    </database>
+</root>

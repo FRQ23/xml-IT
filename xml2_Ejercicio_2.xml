@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!-- 2.- En base al punto 2 del ejercicio anterior continuar con el XML para crear los elementos visuales bajo las siguientes caracteristicas
+- Crear una pantalla con un tama�o de 500X650 acomodando los elementos segun crean conveniente.
+- Tomar en cuenta los siguientes puntos:
+	- El "noDocumento" y el "total" son campos que el usuario no podra capturar
+	- Los campos que se utilizan para el producto por el momento no son requeridos, asi que estos no se pondran en la pantalla
+	- Crear un nuevo procedimiento llamado "GetFolio" el cual se encargaria de traer el siguiente folio que se utilizaria para  guardar el documento
+		* Para tomar el folio conciderar que existe una tabla llamada "doc_fol" con columnas de "clave" y "actual".
+		En esta tabla se pueden encontrar un registro con clave "general" y el contador del ultimo folio ya registrado.
+		* Hacer que el procedimiento de "GetFolio" siempre se ejecute al momento de abrir la pantalla.
+		* OJO, por el momento no se requiere de visualizar el valor, solo se tomara en cuenta la forma en la cual se estaria haciendo la llamada para
+		la ejecucion del procedimiento -->
+<root>
+    <database table="doc_enc, doc_cue, doc_fol">
+        <members>
+            <item name="fecha" datatype="date" />
+            <item name="noDocumento" datatype="int" />
+            <item name="clienteId" datatype="int" />
+            <item name="total" datatype="decimal" />
+        </members>
+        <procedures>
+            <procedure type="insert" name="InsertDocEnc" query="INSERT INTO doc_enc (fecha, noDocumento, clienteId, total) VALUES (@fecha, @noDocumento, @clienteId, @total);" />
+            <procedure type="insert" name="InsertDocCue" query="INSERT INTO doc_cue (noDocumento, colClave, colDescripcion, colPrecio) VALUES (@noDocumento, @colClave, @colDescripcion, @colPrecio);" />
+            <procedure type="selectS" name="GetFolio" query="SELECT actual + 1 AS nuevoFolio FROM doc_fol WHERE clave = 'general';" />
+        </procedures>
+    </database>
+    <userControl height="650" width="500" onLoad="GetFolio">
+        <item name="fecha" label="Fecha" type="datepicker" position="10,10" labelposition="10,30" size="150,30"/>
+        <item name="clienteId" label="ID Cliente" type="textbox" position="10,60" labelposition="10,80" size="100,30"/>
+        <item name="submit" label="Guardar" type="button" position="10,110" size="100,30" />
+    </userControl>
+</root>
+
